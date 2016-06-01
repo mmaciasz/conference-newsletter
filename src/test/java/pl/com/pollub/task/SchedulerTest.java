@@ -1,10 +1,10 @@
 package pl.com.pollub.task;
 
 import junit.framework.TestCase;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.scheduling.support.CronSequenceGenerator;
@@ -22,6 +22,7 @@ import java.util.Date;
 @SpringApplicationConfiguration(ContextConfiguration.class)
 public class SchedulerTest extends TestCase {
 
+    private static final Logger log = LoggerFactory.getLogger(SchedulerTest.class);
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Value("${cron.daily.expression}")
@@ -66,7 +67,7 @@ public class SchedulerTest extends TestCase {
             final Date next = cronGenerator.next(DATE_FORMAT.parse(actualDate));
             assertEquals(expectedDate, next);
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error("Unparsable date exception. Wrong date: {} or {}.", expectedDateString, actualDate);
         }
     }
 }
