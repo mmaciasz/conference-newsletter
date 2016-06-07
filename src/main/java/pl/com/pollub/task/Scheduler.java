@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
 import pl.com.pollub.db.entity.Conference;
+import pl.com.pollub.db.entity.ConferenceChanges;
+import pl.com.pollub.service.ConferenceChangesService;
 import pl.com.pollub.service.ConferenceService;
 
 import java.util.List;
@@ -16,10 +19,13 @@ public class Scheduler {
     private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
     private ConferenceService conferenceService;
+    
+    private ConferenceChangesService changedService;
 
     @Autowired
-    public Scheduler(ConferenceService conferenceService) {
+    public Scheduler(ConferenceService conferenceService,ConferenceChangesService confChangeService ) {
         this.conferenceService = conferenceService;
+        this.changedService = confChangeService;
     }
 
     /**
@@ -66,9 +72,17 @@ public class Scheduler {
 
     @Scheduled(cron = "${cron.test.expresssion}")
     private void testRepo() {
-        List<Conference> allConferences = conferenceService.findAllConference();
-        allConferences.stream().map(Conference::getName).forEach(System.out::println);
-        Conference byName = conferenceService.getByName("10th International Conference on Interactive Mobile Communication, Technologies and Learning");
-        System.out.println(byName.getName());
+      
+      List<Conference> allConferences = conferenceService.findAllConference();
+      allConferences.stream().map(Conference::getName).forEach(System.out::println);
+      Conference byName = conferenceService.getByName("10th International Conference on Interactive Mobile Communication, Technologies and Learning");
+      System.out.println(byName.getName());
+    	
+      List<ConferenceChanges> confChanges = changedService.getByTypeAndOperation("FILE","I");
+      confChanges.stream().map(ConferenceChanges::getId).forEach(System.out::println);
+    
+
+    	
+    	
     }
 }
