@@ -4,7 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -16,9 +19,10 @@ public class ConferenceChanges {
     @Column(name="id")
     private Integer id; 
     
-    @Column(name="Conferenceid")
-    private Integer conferenceId; 
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Conferenceid")
+    private Conference conference;
+        
     @Column(name="type")
     private String type;
     
@@ -30,24 +34,8 @@ public class ConferenceChanges {
     
     @Column(name="changetype")
     private String changeType;
-
+    
     public ConferenceChanges() {} //Always add default constructor
-
-    public Integer getConferenceid() {
-        return conferenceId;
-    }
-
-    public void setConferenceid(Integer conferenceid) {
-        this.conferenceId = conferenceid;
-    }
-
-	public Integer getConferenceId() {
-		return conferenceId;
-	}
-
-	public void setConferenceId(Integer conferenceId) {
-		this.conferenceId = conferenceId;
-	}
 
 	public Integer getId() {
 		return id;
@@ -87,6 +75,16 @@ public class ConferenceChanges {
 
 	public void setChangeType(String changeType) {
 		this.changeType = changeType;
+	}
+
+
+	public Conference getConference() {
+		return conference;
+	}
+
+
+	public void setConference(Conference conference) {
+		this.conference = conference;
 	}
 
 }
