@@ -29,4 +29,12 @@ public interface ConferenceChangesRepository extends CrudRepository<ConferenceCh
     @Query("Select cs from ConferenceChanges cs where (cs.type ='MAGAZINE' or cs.type ='SCORE') "
     		+ "and cs.changedate between ?1 and ?2 order by cs.type, cs.changedate")
     List<ConferenceChanges> getConferenceWereMagazineChange(Date start, Date end);
+    
+    @Query("Select cs from ConferenceChanges cs where cs.type ='CONFERENCE' and cs.changeType = 'U' "
+    		+ "and cs.changedate between ?1 and ?2 order by cs.changedate")
+    List<ConferenceChanges> getChangeConferenceAndPropertyFileds(Date start, Date end);
+    
+    @Query("Select cs from ConferenceChanges cs where cs.type ='CONFERENCE' and cs.changeType = 'E' "
+    		+ "and cs.changedate between ?1 and ?2 order by cs.changedate")
+    List<ConferenceChanges> getChangeConferenceWithoutFileds(Date start, Date end);
 }

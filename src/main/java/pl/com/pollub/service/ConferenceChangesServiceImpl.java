@@ -57,4 +57,16 @@ public class ConferenceChangesServiceImpl implements ConferenceChangesService {
 		return repository.getConferenceWereMagazineChange(start, end);
 	}
 
+	@Override
+	public List<ConferenceChanges> getChangeConferenceAndPropertyFileds(
+			Date start, Date end) {
+		return repository.getChangeConferenceAndPropertyFileds(start, end);
+	}
+
+	@Override
+	public List<ConferenceChanges> getChangeConferenceWithoutFileds(Date start,
+			Date end) {
+		return repository.getChangeConferenceWithoutFileds(start, end);
+	}
+
 }

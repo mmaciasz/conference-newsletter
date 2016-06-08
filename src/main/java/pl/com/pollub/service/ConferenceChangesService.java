@@ -19,4 +19,8 @@ public interface ConferenceChangesService {
     List<ConferenceChanges> getConferenceWereFileChange(Date start, Date end);
     
     List<ConferenceChanges> getConferenceWereMagazineChange (Date start, Date end);
+    
+    List<ConferenceChanges> getChangeConferenceAndPropertyFileds(Date start, Date end);
+    
+    List<ConferenceChanges> getChangeConferenceWithoutFileds(Date start, Date end);
 }
