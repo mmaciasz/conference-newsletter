@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `conferencechanges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `conferenceid` int(11) NOT NULL,
-  `typeofchange` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL,
   `changedate` datetime NOT NULL,
   `changedFields` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
