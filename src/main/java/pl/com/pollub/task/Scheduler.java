@@ -69,17 +69,4 @@ public class Scheduler {
         System.gc();
         log.info("Garbage collection ended.");
     }
-
-    @Scheduled(cron = "${cron.test.expresssion}")
-    private void testRepo() { //TODO move to tests
-      
-      List<Conference> allConferences = conferenceService.findAllConference();
-      allConferences.stream().map(Conference::getName).forEach(System.out::println);
-      Conference byName = conferenceService.getByName("10th International Conference on Interactive Mobile Communication, Technologies and Learning");
-      System.out.println(byName.getName());
-    	
-      List<ConferenceChanges> confChanges = changedService.getByTypeAndOperation("FILE","I");
-      confChanges.stream().map(ConferenceChanges::getId).forEach(System.out::println);
-    	
-    }
 }

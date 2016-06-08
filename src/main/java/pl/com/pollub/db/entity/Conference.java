@@ -16,7 +16,7 @@ public class Conference {
 
     @Id
     @Column(name="Conferenceid")
-    private Integer conferenceId; // Beware of camel-case
+    private Integer conferenceId;
     
     @Column(name="Name")
     private String name;
@@ -44,7 +44,15 @@ public class Conference {
     
     public Conference() {} //Always add default constructor
 
-    public Integer getConferenceid() {
+	public Conference(Integer conferenceId, String name, Date dateFrom, Date dateTo, Date applicationDate) {
+		this.conferenceId = conferenceId;
+		this.name = name;
+		this.dateFrom = dateFrom;
+		this.dateTo = dateTo;
+		this.applicationDate = applicationDate;
+	}
+
+	public Integer getConferenceid() {
         return conferenceId;
     }
 
