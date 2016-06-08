@@ -36,7 +36,7 @@ public class SendEmail {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        session = Session.getInstance(props, new javax.mail.Authenticator() {
+        session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(login, password);
             }
@@ -51,7 +51,7 @@ public class SendEmail {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
 
-        sessionSSL = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+        sessionSSL = Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(login, password);
             }
@@ -79,7 +79,7 @@ public class SendEmail {
             log.info("Wysłano email! Na adres: " + address);
 
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            log.error("Error sending email.", e);
         }
     }
 
