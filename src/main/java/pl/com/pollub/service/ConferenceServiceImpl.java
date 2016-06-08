@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.com.pollub.db.ConferenceRepository;
 import pl.com.pollub.db.entity.Conference;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,4 +35,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public Conference getByName(String conferenceName) {
         return repository.getByName(conferenceName);
     }
+
+	@Override
+	public List<Conference> getConferenceByDate(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceByDate(start, end);
+	}
 }

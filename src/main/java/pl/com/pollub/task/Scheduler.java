@@ -19,11 +19,11 @@ public class Scheduler {
     private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
     private ConferenceService conferenceService;
-    
+
     private ConferenceChangesService changedService;
 
     @Autowired
-    public Scheduler(ConferenceService conferenceService,ConferenceChangesService confChangeService ) {
+    public Scheduler(ConferenceService conferenceService, ConferenceChangesService confChangeService) {
         this.conferenceService = conferenceService;
         this.changedService = confChangeService;
     }

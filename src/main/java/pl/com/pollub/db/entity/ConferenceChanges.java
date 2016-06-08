@@ -1,7 +1,9 @@
 package pl.com.pollub.db.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -21,7 +23,8 @@ public class ConferenceChanges {
     private String type;
 
     @Column(name = "changedate")
-    private Date changedate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime changedate;
 
     @Column(name = "changedfields")
     private String changedFields;
@@ -32,7 +35,7 @@ public class ConferenceChanges {
     public ConferenceChanges() {
     } //Always add default constructor
 
-    public ConferenceChanges(Conference conference, String type, Date changedate, String changedFields, String changeType) {
+    public ConferenceChanges(Conference conference, String type, LocalDateTime changedate, String changedFields, String changeType) {
         this.conference = conference;
         this.type = type;
         this.changedate = changedate;
@@ -56,11 +59,11 @@ public class ConferenceChanges {
         this.type = type;
     }
 
-    public Date getChangedate() {
+    public LocalDateTime getChangedate() {
         return changedate;
     }
 
-    public void setChangedate(Date changedate) {
+    public void setChangedate(LocalDateTime changedate) {
         this.changedate = changedate;
     }
 

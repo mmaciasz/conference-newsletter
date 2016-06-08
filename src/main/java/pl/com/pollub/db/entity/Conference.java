@@ -1,58 +1,66 @@
 package pl.com.pollub.db.entity;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 /**
  * Created by Mateusz on 2016-06-02.
  */
 @Entity
-@Table(name="conference")
+@Table(name = "conference")
 public class Conference {
 
     @Id
-    @Column(name="Conferenceid")
+    @Column(name = "Conferenceid")
     private Integer conferenceId;
-    
-    @Column(name="Name")
+
+    @Column(name = "Name")
     private String name;
-    
-    @Column(name="datefrom")
-    private Date dateFrom;
-    
-    @Column(name="dateto")
-    private Date dateTo;
-    
-    @Column(name="applicationdate")
-    private Date applicationDate;
-    
-    @Column(name="fullpaperdate")
-    private Date FullPaperDate;
-    
-    @Column(name="creationdate")
-    private Date CreationDate;
-    
-    @Column(name="paymentdate")
-    private Date PaymentDate;
-    
-    @Column(name="www")
+
+    @Column(name = "datefrom")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime dateFrom;
+
+    @Column(name = "dateto")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime dateTo;
+
+    @Column(name = "applicationdate")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime applicationDate;
+
+    @Column(name = "fullpaperdate")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime FullPaperDate;
+
+    @Column(name = "creationdate")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime CreationDate;
+
+    @Column(name = "paymentdate")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime PaymentDate;
+
+    @Column(name = "www")
     private String www;
-    
-    public Conference() {} //Always add default constructor
 
-	public Conference(Integer conferenceId, String name, Date dateFrom, Date dateTo, Date applicationDate) {
-		this.conferenceId = conferenceId;
-		this.name = name;
-		this.dateFrom = dateFrom;
-		this.dateTo = dateTo;
-		this.applicationDate = applicationDate;
-	}
+    public Conference() {
+    } //Always add default constructor
 
-	public Integer getConferenceid() {
+    public Conference(Integer conferenceId, String name, LocalDateTime dateFrom, LocalDateTime dateTo, LocalDateTime applicationDate) {
+        this.conferenceId = conferenceId;
+        this.name = name;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.applicationDate = applicationDate;
+    }
+
+    public Integer getConferenceid() {
         return conferenceId;
     }
 
@@ -68,67 +76,67 @@ public class Conference {
         this.name = name;
     }
 
-	public Integer getConferenceId() {
-		return conferenceId;
-	}
+    public Integer getConferenceId() {
+        return conferenceId;
+    }
 
-	public void setConferenceId(Integer conferenceId) {
-		this.conferenceId = conferenceId;
-	}
+    public void setConferenceId(Integer conferenceId) {
+        this.conferenceId = conferenceId;
+    }
 
-	public Date getDateFrom() {
-		return dateFrom;
-	}
+    public LocalDateTime getDateFrom() {
+        return dateFrom;
+    }
 
-	public void setDateFrom(Date dateFrom) {
-		this.dateFrom = dateFrom;
-	}
+    public void setDateFrom(LocalDateTime dateFrom) {
+        this.dateFrom = dateFrom;
+    }
 
-	public Date getDateTo() {
-		return dateTo;
-	}
+    public LocalDateTime getDateTo() {
+        return dateTo;
+    }
 
-	public void setDateTo(Date dateTo) {
-		this.dateTo = dateTo;
-	}
+    public void setDateTo(LocalDateTime dateTo) {
+        this.dateTo = dateTo;
+    }
 
-	public Date getApplicationDate() {
-		return applicationDate;
-	}
+    public LocalDateTime getApplicationDate() {
+        return applicationDate;
+    }
 
-	public void setApplicationDate(Date applicationDate) {
-		this.applicationDate = applicationDate;
-	}
+    public void setApplicationDate(LocalDateTime applicationDate) {
+        this.applicationDate = applicationDate;
+    }
 
-	public Date getFullPaperDate() {
-		return FullPaperDate;
-	}
+    public LocalDateTime getFullPaperDate() {
+        return FullPaperDate;
+    }
 
-	public void setFullPaperDate(Date fullPaperDate) {
-		FullPaperDate = fullPaperDate;
-	}
+    public void setFullPaperDate(LocalDateTime fullPaperDate) {
+        FullPaperDate = fullPaperDate;
+    }
 
-	public Date getCreationDate() {
-		return CreationDate;
-	}
+    public LocalDateTime getCreationDate() {
+        return CreationDate;
+    }
 
-	public void setCreationDate(Date creationDate) {
-		CreationDate = creationDate;
-	}
+    public void setCreationDate(LocalDateTime creationDate) {
+        CreationDate = creationDate;
+    }
 
-	public Date getPaymentDate() {
-		return PaymentDate;
-	}
+    public LocalDateTime getPaymentDate() {
+        return PaymentDate;
+    }
 
-	public void setPaymentDate(Date paymentDate) {
-		PaymentDate = paymentDate;
-	}
+    public void setPaymentDate(LocalDateTime paymentDate) {
+        PaymentDate = paymentDate;
+    }
 
-	public String getWww() {
-		return www;
-	}
+    public String getWww() {
+        return www;
+    }
 
-	public void setWww(String www) {
-		this.www = www;
-	}
+    public void setWww(String www) {
+        this.www = www;
+    }
 }
