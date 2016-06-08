@@ -290,5 +290,10 @@ DELIMITER ;
  * 
  *                                  
  */
+/*
+ * add usersettings table
+ */
+CREATE TABLE `conference`.`usersettings` ( `id` INT NOT NULL , `userid` INT NOT NULL , `name` VARCHAR(45) NOT NULL , `lastname` VARCHAR(45) NOT NULL , `newsletterlevel` INT NOT NULL , `allowednewsletterlevel` INT NOT NULL , `active` INT NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `usersettings` ADD PRIMARY KEY(`id`);
 
 
