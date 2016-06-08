@@ -21,8 +21,7 @@ public class UserSettings {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Userid")
+	@Column(name = "userid")
 	private Long userId;
 	
 	@Column(name = "name")
