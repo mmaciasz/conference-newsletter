@@ -1,8 +1,12 @@
 package pl.com.pollub.db;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
 import pl.com.pollub.db.entity.Conference;
 
 /**
@@ -13,4 +17,8 @@ public interface ConferenceRepository extends CrudRepository<Conference, Integer
 
     @Query("Select cs from Conference cs where name = ?1")
     Conference getByName(String name);
+    
+    @Query("Select cs from Conference cs where cs.CreationDate between ?1 and ?2")
+    List<Conference> getConferenceByDate(Date start, Date end); 
+    
 }

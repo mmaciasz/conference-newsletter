@@ -3,10 +3,12 @@ package pl.com.pollub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import pl.com.pollub.db.ConferenceRepository;
 import pl.com.pollub.db.entity.Conference;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,4 +36,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public Conference getByName(String conferenceName) {
         return repository.getByName(conferenceName);
     }
+
+	@Override
+	public List<Conference> getConferenceByDate(Date start, Date end) {
+		return repository.getConferenceByDate(start, end);
+	}
 }

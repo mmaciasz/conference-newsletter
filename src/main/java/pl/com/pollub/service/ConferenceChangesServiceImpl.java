@@ -8,6 +8,7 @@ import pl.com.pollub.db.ConferenceChangesRepository;
 import pl.com.pollub.db.entity.ConferenceChanges;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -38,6 +39,22 @@ public class ConferenceChangesServiceImpl implements ConferenceChangesService {
 	public List<ConferenceChanges> getByTypeAndOperation(String type, String operation) {
 		return repository.getByTypeAndChangeType(type, operation);
 		
+	}
+
+	@Override
+	public List<ConferenceChanges> getConferenceWereCommentChange(Date start, Date end) {
+		return repository.getConferenceWereCommentChange(start, end);
+	}
+
+	@Override
+	public List<ConferenceChanges> getConferenceWereFileChange(Date start, Date end) {
+		return repository.getConferenceWereCommentChange(start, end);
+	}
+
+	@Override
+	public List<ConferenceChanges> getConferenceWereMagazineChange(Date start,
+			Date end) {
+		return repository.getConferenceWereMagazineChange(start, end);
 	}
 
 }
