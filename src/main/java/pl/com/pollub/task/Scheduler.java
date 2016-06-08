@@ -71,7 +71,7 @@ public class Scheduler {
     }
 
     @Scheduled(cron = "${cron.test.expresssion}")
-    private void testRepo() {
+    private void testRepo() { //TODO move to tests
       
       List<Conference> allConferences = conferenceService.findAllConference();
       allConferences.stream().map(Conference::getName).forEach(System.out::println);
@@ -80,9 +80,6 @@ public class Scheduler {
     	
       List<ConferenceChanges> confChanges = changedService.getByTypeAndOperation("FILE","I");
       confChanges.stream().map(ConferenceChanges::getId).forEach(System.out::println);
-    
-
-    	
     	
     }
 }

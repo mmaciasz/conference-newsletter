@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.scheduling.support.CronSequenceGenerator;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.com.pollub.ContextConfiguration;
+import pl.com.ContextConfiguration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
