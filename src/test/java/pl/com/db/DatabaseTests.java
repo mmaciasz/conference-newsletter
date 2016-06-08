@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.CollectionUtils;
 import pl.com.ContextConfiguration;
 import pl.com.pollub.db.entity.Conference;
+import pl.com.pollub.db.entity.ConferenceChanges;
 import pl.com.pollub.service.ConferenceChangesService;
 import pl.com.pollub.service.ConferenceService;
 
@@ -43,6 +45,10 @@ public class DatabaseTests {
 
     @Test
     public void testConferenceChanges() {
-        // TODO Write test for this
+        List<ConferenceChanges> allConferences = changedService.findAllChanges();
+        assertEquals(6, allConferences.size());
+        allConferences.stream().map(ConferenceChanges::getConference).map(Conference::getName).forEach(log::info);
+        List<ConferenceChanges> changes = changedService.getByType("E");
+        assertTrue(!CollectionUtils.isEmpty(changes));
     }
 }
