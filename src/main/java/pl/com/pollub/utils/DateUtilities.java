@@ -1,64 +1,61 @@
 package pl.com.pollub.utils;
 
-import java.util.Calendar;
-import java.util.Date;
-
-import org.apache.commons.lang3.time.DateUtils;
+import java.time.LocalDateTime;
 
 public class DateUtilities {
 
-	public static Date getEndOfDay(Date date) {
-	    return DateUtils.addMilliseconds(DateUtils.ceiling(date, Calendar.DATE), -1);
-	}
+    public static LocalDateTime getEndOfDay(LocalDateTime date) {
+        return date.withHour(23).withMinute(59).withSecond(59);
+    }
 
-	public static Date getStartOfDay(Date date) {
-	    return DateUtils.truncate(date, Calendar.DATE);
-	}
-	
-	public static Date getDayEnd(Date date, DateRange range, boolean inPast) {
+    public static LocalDateTime getStartOfDay(LocalDateTime date) {
+        return date.withHour(0).withMinute(0).withSecond(0);
+    }
 
-		switch (range) {
-		case DAY:
-			date = getEndOfDay(date);
-			break;
-		case WEEK:
-			date = getEndOfDay(DateUtils.addWeeks(new Date(), inPast?-1:1));
-			break;
-		case MONTH:
-			date = getEndOfDay(DateUtils.addMonths(new Date(), inPast?-1:1));
-			break;
-		case TREE_MONTH:
-			date = getEndOfDay(DateUtils.addMonths(new Date(), inPast?-3:3));
-			break;
-		}
-		return date;
-	}
-	
-	public static Date getDayStart(Date date, DateRange range, boolean inPast) {
-		
+    public static LocalDateTime getDayEnd(LocalDateTime date, DateRange range, boolean inPast) {
 
-		switch (range) {
-		case DAY:
-			date = getStartOfDay(date);
-			break;
-		case WEEK:
-			date = getStartOfDay(DateUtils.addWeeks(new Date(), inPast?-1:1));
-			break;
-		case MONTH:
-			date = getStartOfDay(DateUtils.addMonths(new Date(), inPast?-1:1));
-			break;
-		case TREE_MONTH:
-			date = getStartOfDay(DateUtils.addMonths(new Date(), inPast?-3:3));
-			break;
-		}
-		return date;
-	}
-	
-	public static enum DateRange{
-		DAY,
-		WEEK,
-		MONTH,
-		TREE_MONTH
-	};
-	
+        switch (range) {
+            case DAY:
+                date = getEndOfDay(date);
+                break;
+            case WEEK:
+                date = getEndOfDay(inPast ? date.minusWeeks(1) : date.plusWeeks(1));
+                break;
+            case MONTH:
+                date = getEndOfDay(inPast ? date.minusMonths(1) : date.plusMonths(1));
+                break;
+            case TREE_MONTH:
+                date = getEndOfDay(inPast ? date.minusMonths(3) : date.plusMonths(3));
+                break;
+        }
+        return date;
+    }
+
+    public static LocalDateTime getDayStart(LocalDateTime date, DateRange range, boolean inPast) {
+
+
+        switch (range) {
+            case DAY:
+                date = getStartOfDay(date);
+                break;
+            case WEEK:
+                date = getStartOfDay(inPast ? date.minusWeeks(1) : date.plusWeeks(1));
+                break;
+            case MONTH:
+                date = getStartOfDay(inPast ? date.minusMonths(1) : date.plusMonths(1));
+                break;
+            case TREE_MONTH:
+                date = getStartOfDay(inPast ? date.minusMonths(3) : date.plusMonths(3));
+                break;
+        }
+        return date;
+    }
+
+    public enum DateRange {
+        DAY,
+        WEEK,
+        MONTH,
+        TREE_MONTH
+    }
+
 }
