@@ -38,3 +38,20 @@ values(153,3,'moja 1111','2015-04-11','2016-06-11','POLAND','niemce');
 INSERT into conference 
 (ConferenceId,CreatorId,Name,DateFrom,DateTo,Country,City) 
 values(154,1,'moja 1','2016-04-11','2016-06-11','POLAND','nielisz cycow niemce');
+
+/*
+insert do usersettings
+*/
+INSERT into usersettings (userid, name, lastname, newsletterlevel, allowednewsletterlevel, active)
+values (1, 'Zdzich', 'Śliski', 3, 5, 1);
+
+INSERT into usersettings (userid, name, lastname, newsletterlevel, allowednewsletterlevel, active)
+values (2, 'Krzych', 'Marchewka', 1, 2, 1);
+
+INSERT into usersettings (userid, name, lastname, newsletterlevel, allowednewsletterlevel, active)
+values (3, 'Anna', 'Gała', 5, 5, 1);
+
+INSERT into usersettings (userid, name, lastname, newsletterlevel, allowednewsletterlevel, active)
+values (4, 'Zdzisław', 'Dyrma', 2, 2, 1);
+
+
