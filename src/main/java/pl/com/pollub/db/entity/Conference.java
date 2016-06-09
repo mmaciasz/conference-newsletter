@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 /**
- * Created by Mateusz on 2016-06-02.
+ * Created by mmaciasz on 2016-06-02.
  */
 @Entity
 @Table(name = "conference")

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mateusz on 2016-06-02.
+ * Created by mmaciasz on 2016-06-02.
  */
 @Service
 @Transactional(readOnly = true)

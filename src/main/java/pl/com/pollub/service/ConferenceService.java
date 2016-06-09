@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Created by Mateusz on 2016-06-02.
+ * Created by mmaciasz on 2016-06-02.
  */
 public interface ConferenceService {
 
