@@ -14,5 +14,13 @@ public interface ConferenceService {
 
     Conference getByName(String conferenceName);
 
-    List<Conference> getConferenceByDate(LocalDateTime start, LocalDateTime end);
+    List<Conference> getConferenceWhereCreationDateBetween(LocalDateTime start, LocalDateTime end);
+    
+    List<Conference> getConferenceWereApplicationDateIsEnding(LocalDateTime start, LocalDateTime end);
+    
+    List<Conference> getConferenceWhereStartBetween(LocalDateTime start, LocalDateTime end);
+    
+    List<Conference> getConferenceWhereFullPaperDateIsEnding(LocalDateTime start, LocalDateTime end);
+
+    List<Conference> getConferenceWherePaymentDateIsEnding(LocalDateTime start, LocalDateTime end);
 }

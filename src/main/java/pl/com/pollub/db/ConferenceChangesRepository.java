@@ -19,14 +19,14 @@ public interface ConferenceChangesRepository extends CrudRepository<ConferenceCh
     List<ConferenceChanges> getByTypeAndChangeType(String type, String changeType);
 
     @Query("Select cs from ConferenceChanges cs where cs.type ='COMMENT' and cs.changedate between ?1 and ?2 order by cs.changedate")
-    List<ConferenceChanges> getConferenceWereCommentChange(LocalDateTime start, LocalDateTime end);
+    List<ConferenceChanges> getConferenceWhereCommentChange(LocalDateTime start, LocalDateTime end);
 
     @Query("Select cs from ConferenceChanges cs where cs.type ='FILE' and cs.changedate between ?1 and ?2 order by cs.changedate")
-    List<ConferenceChanges> getConferenceWereFileChange(LocalDateTime start, LocalDateTime end);
+    List<ConferenceChanges> getConferenceWhereFileChange(LocalDateTime start, LocalDateTime end);
 
     @Query("Select cs from ConferenceChanges cs where (cs.type ='MAGAZINE' or cs.type ='SCORE') "
             + "and cs.changedate between ?1 and ?2 order by cs.type, cs.changedate")
-    List<ConferenceChanges> getConferenceWereMagazineChange(LocalDateTime start, LocalDateTime end);
+    List<ConferenceChanges> getConferenceWhereMagazineChange(LocalDateTime start, LocalDateTime end);
 
     @Query("Select cs from ConferenceChanges cs where cs.type ='CONFERENCE' and cs.changeType = 'U' "
             + "and cs.changedate between ?1 and ?2 order by cs.changedate")
@@ -35,4 +35,6 @@ public interface ConferenceChangesRepository extends CrudRepository<ConferenceCh
     @Query("Select cs from ConferenceChanges cs where cs.type ='CONFERENCE' and cs.changeType = 'E' "
             + "and cs.changedate between ?1 and ?2 order by cs.changedate")
     List<ConferenceChanges> getChangeConferenceWithoutFileds(LocalDateTime start, LocalDateTime end);
+    
+    
 }

@@ -37,7 +37,27 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
 	@Override
-	public List<Conference> getConferenceByDate(LocalDateTime start, LocalDateTime end) {
-		return repository.getConferenceByDate(start, end);
+	public List<Conference> getConferenceWhereCreationDateBetween(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceWhereCreationDateBetween(start, end);
+	}
+
+	@Override
+	public List<Conference> getConferenceWereApplicationDateIsEnding(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceWhereApplicationDateIsEnding(start, end);
+	}
+
+	@Override
+	public List<Conference> getConferenceWhereStartBetween(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceWhereStartBetween(start, end);
+	}
+
+	@Override
+	public List<Conference> getConferenceWhereFullPaperDateIsEnding(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceWhereFullPaperDateIsEnding(start, end);
+	}
+
+	@Override
+	public List<Conference> getConferenceWherePaymentDateIsEnding(LocalDateTime start, LocalDateTime end) {
+		return repository.getConferenceWherePaymentDateIsEnding(start, end);
 	}
 }

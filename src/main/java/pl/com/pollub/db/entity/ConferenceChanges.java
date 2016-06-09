@@ -2,7 +2,10 @@ package pl.com.pollub.db.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import pl.com.pollub.db.converter.DateConverter;
+
 import javax.persistence.*;
+
 import java.time.LocalDateTime;
 
 
@@ -24,6 +27,7 @@ public class ConferenceChanges {
 
     @Column(name = "changedate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Convert(converter = DateConverter.class)
     private LocalDateTime changedate;
 
     @Column(name = "changedfields")

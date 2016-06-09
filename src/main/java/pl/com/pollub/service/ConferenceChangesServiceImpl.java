@@ -42,17 +42,17 @@ public class ConferenceChangesServiceImpl implements ConferenceChangesService {
 
     @Override
     public List<ConferenceChanges> getConferenceWereCommentChange(LocalDateTime start, LocalDateTime end) {
-        return repository.getConferenceWereCommentChange(start, end);
+        return repository.getConferenceWhereCommentChange(start, end);
     }
 
     @Override
     public List<ConferenceChanges> getConferenceWereFileChange(LocalDateTime start, LocalDateTime end) {
-        return repository.getConferenceWereCommentChange(start, end);
+        return repository.getConferenceWhereCommentChange(start, end);
     }
 
     @Override
     public List<ConferenceChanges> getConferenceWereMagazineChange(LocalDateTime start, LocalDateTime end) {
-        return repository.getConferenceWereMagazineChange(start, end);
+        return repository.getConferenceWhereMagazineChange(start, end);
     }
 
     @Override

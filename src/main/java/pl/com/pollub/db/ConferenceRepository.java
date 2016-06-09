@@ -18,6 +18,18 @@ public interface ConferenceRepository extends CrudRepository<Conference, Integer
     Conference getByName(String name);
 
     @Query("Select cs from Conference cs where cs.CreationDate between ?1 and ?2")
-    List<Conference> getConferenceByDate(LocalDateTime start, LocalDateTime end);
+    List<Conference> getConferenceWhereCreationDateBetween(LocalDateTime start, LocalDateTime end);
+    
+    @Query("Select cs from Conference cs where cs.applicationDate between ?1 and ?2 ")
+    List<Conference> getConferenceWhereApplicationDateIsEnding(LocalDateTime start, LocalDateTime end);
+
+    @Query("Select cs from Conference cs where cs.dateFrom between ?1 and ?2 ")
+    List<Conference> getConferenceWhereStartBetween(LocalDateTime start, LocalDateTime end);
+
+    @Query("Select cs from Conference cs where cs.FullPaperDate between ?1 and ?2 ")
+    List<Conference> getConferenceWhereFullPaperDateIsEnding(LocalDateTime start, LocalDateTime end);
+
+    @Query("Select cs from Conference cs where cs.PaymentDate between ?1 and ?2 ")
+    List<Conference> getConferenceWherePaymentDateIsEnding(LocalDateTime start, LocalDateTime end);
 
 }
