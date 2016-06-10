@@ -1,99 +1,91 @@
 package pl.com.pollub.db.entity;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usersettings")
 public class UserSettings {
 
-	@Id
-    @Column(name = "id")
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Column(name = "userid")
-	private Long userId;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "lastname")
-	private String lastName;
-	
-	@Column(name = "newsletterLevel")
-	private int newsletterLevel;
-	
-	@Column(name = "time")
-	private Date time;
-	
-	@Column(name = "allowednewsletterlevel")
-	private int allowedNewsletterLevel;
-	
-	@Column(name = "active")
-	private int active;
-	
-	public UserSettings(){
-		
-	}
-	
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getUserId() {
-		return userId;
-	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public int getNewsletterLevel() {
-		return newsletterLevel;
-	}
-	public void setNewsletterLevel(int newsletterLevel) {
-		this.newsletterLevel = newsletterLevel;
-	}
-	public Date getTime() {
-		return time;
-	}
-	public void setTime(Date time) {
-		this.time = time;
-	}
-	public int getAllowedNewsletterLevel() {
-		return allowedNewsletterLevel;
-	}
-	public void setAllowedNewsletterLevel(int allowedNewsletterLevel) {
-		this.allowedNewsletterLevel = allowedNewsletterLevel;
-	}
-	public int getActive() {
-		return active;
-	}
-	public void setActive(int active) {
-		this.active = active;
-	}
-	
+    private Long id;
+    private Long userId;
+    private String name;
+    private String lastName;
+    private int newsletterLevel;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime time;
+    private int allowedNewsletterLevel;
+    private int active;
+
+    public UserSettings() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getNewsletterLevel() {
+        return newsletterLevel;
+    }
+
+    public void setNewsletterLevel(int newsletterLevel) {
+        this.newsletterLevel = newsletterLevel;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    public int getAllowedNewsletterLevel() {
+        return allowedNewsletterLevel;
+    }
+
+    public void setAllowedNewsletterLevel(int allowedNewsletterLevel) {
+        this.allowedNewsletterLevel = allowedNewsletterLevel;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
 }

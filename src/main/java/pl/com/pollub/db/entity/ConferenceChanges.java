@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 public class ConferenceChanges {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
@@ -22,18 +21,13 @@ public class ConferenceChanges {
     @JoinColumn(name = "Conferenceid")
     private Conference conference;
 
-    @Column(name = "type")
     private String type;
 
-    @Column(name = "changedate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime changedate;
 
-    @Column(name = "changedfields")
     private String changedFields;
 
-    @Column(name = "changetype")
     private String changeType;
 
     public ConferenceChanges() {

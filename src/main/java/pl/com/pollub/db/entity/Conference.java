@@ -20,43 +20,28 @@ import java.time.LocalDateTime;
 public class Conference {
 
     @Id
-    @Column(name = "Conferenceid")
     private Integer conferenceId;
 
-    @Column(name = "Name")
     private String name;
 
-    @Column(name = "datefrom")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime dateFrom;
 
-    @Column(name = "dateto")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime dateTo;
 
-    @Column(name = "applicationdate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime applicationDate;
 
-    @Column(name = "fullpaperdate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime FullPaperDate;
 
-    @Column(name = "creationdate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime CreationDate;
 
-    @Column(name = "paymentdate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Convert(converter = DateTimeConverter.class)
     private LocalDateTime PaymentDate;
 
-    @Column(name = "www")
     private String www;
 
     public Conference() {
