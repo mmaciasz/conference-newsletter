@@ -62,51 +62,11 @@ public enum ConferenceContentCreator {
                     + newLine;
         }
     },
-    CHANGES_APPLICATION {
+    CHANGES_FIELDS {
         @Override
         public String getContent(ConferenceWithChanges conference) {
             return "Zmiany w konferencji - "
                     + conference.getConference().getName()
-                    + ". Data terminu zgłaszania - "
-                    + conference.getConference().getApplicationDate().format(formatter)
-                    + " "
-                    + conference.getChanges()
-                    + newLine;
-        }
-    },
-    CHANGES_START {
-        @Override
-        public String getContent(ConferenceWithChanges conference) {
-            return "Zmiany w konferencji - "
-                    + conference.getConference().getName()
-                    + ". Data rozpoczęcia - "
-                    + conference.getConference().getDateFrom().format(formatter)
-                    + ", data zakończenia - "
-                    + conference.getConference().getDateTo().format(formatter)
-                    + " "
-                    + conference.getChanges()
-                    + newLine;
-        }
-    },
-    CHANGES_FULLTEXT {
-        @Override
-        public String getContent(ConferenceWithChanges conference) {
-            return "Zmiany w konferencji - "
-                    + conference.getConference().getName()
-                    + ". Data nadsyłania pełnych tekstów - "
-                    + conference.getConference().getFullPaperDate().format(formatter)
-                    + " "
-                    + conference.getChanges()
-                    + newLine;
-        }
-    },
-    CHANGES_PAYMENT {
-        @Override
-        public String getContent(ConferenceWithChanges conference) {
-            return "Zmiany w konferencji - "
-                    + conference.getConference().getName()
-                    + ". Data wniesienia opłaty - "
-                    + conference.getConference().getPaymentDate().format(formatter)
                     + " "
                     + conference.getChanges()
                     + newLine;
