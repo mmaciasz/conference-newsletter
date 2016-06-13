@@ -2,6 +2,7 @@ package pl.com.pollub.webmail;
 
 import org.springframework.stereotype.Component;
 import pl.com.pollub.db.entity.Conference;
+import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import javax.annotation.PostConstruct;
@@ -26,7 +27,7 @@ public class MailContent {
      * @param conferences    Conferences to send
      * @param contentCreator Conference type
      */
-    public void createMailContent(Set<Conference> conferences, ConferenceContentCreator contentCreator) {
+    public void createMailContent(Set<ConferenceWithChanges> conferences, ConferenceContentCreator contentCreator) {
         conferences.stream().map(contentCreator::getContent).forEach(stringBuilderMC::append);
     }
 

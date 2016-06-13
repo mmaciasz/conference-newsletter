@@ -9,6 +9,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.com.ContextConfiguration;
 import pl.com.pollub.db.entity.Conference;
+import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.service.ConferenceService;
 import pl.com.pollub.webmail.auxiliary.ConferenceComparator;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
@@ -38,8 +39,8 @@ public class MailContentTest {
     @Test
     public void createMailContent() throws Exception {
         List<Conference> allConferences = conferenceService.findAllConference();
-        Set<Conference> conferencesSet = new TreeSet<>(ConferenceComparator.getInstance());
-        allConferences.forEach(conferencesSet::add);
+        Set<ConferenceWithChanges> conferencesSet = new TreeSet<>(ConferenceComparator.getInstance());
+        allConferences.forEach(conf -> conferencesSet.add(new ConferenceWithChanges(conf, null)));
         mailContent.createMailContent(conferencesSet, ConferenceContentCreator.NEW);
         String content = this.mailContent.getMailContent();
         log.info(System.lineSeparator() + content);
