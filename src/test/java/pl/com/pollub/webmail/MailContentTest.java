@@ -39,7 +39,7 @@ public class MailContentTest {
     public void createMailContent() throws Exception {
         List<Conference> allConferences = conferenceService.findAllConference();
         Set<Conference> conferencesSet = new TreeSet<>(ConferenceComparator.getInstance());
-        allConferences.stream().forEach(conferencesSet::add);
+        allConferences.forEach(conferencesSet::add);
         mailContent.createMailContent(conferencesSet, ConferenceContentCreator.NEW);
         String content = this.mailContent.getMailContent();
         log.info(System.lineSeparator() + content);

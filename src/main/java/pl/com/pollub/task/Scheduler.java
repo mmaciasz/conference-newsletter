@@ -1,5 +1,6 @@
 package pl.com.pollub.task;
 
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,12 @@ import pl.com.pollub.service.ConferenceService;
 import pl.com.pollub.utils.DateUtilities;
 import pl.com.pollub.utils.DateUtilities.DateRange;
 import pl.com.pollub.webmail.MailContent;
+import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class Scheduler {
@@ -89,7 +92,7 @@ public class Scheduler {
         System.gc();
         log.info("Garbage collection ended.");
     }
-    
+
     @Scheduled(cron = "${cron.test.expresssion}")
     private void testRepo() {
 
@@ -122,6 +125,10 @@ public class Scheduler {
     	
     	//    	List<Conference> allConferences = conferenceService.getConferenceByDate(startDate, endDate);
 //    	changesComments.stream().map(ConferenceChanges::getType).forEach(System.out::println);
+    }
+
+    private List<Pair<ConferenceContentCreator, Set<Conference>>> getData(LocalDateTime startDt, LocalDateTime stopDt, DateRange dateRange, boolean inPast){
+        return null;
     }
     
 }
