@@ -11,15 +11,12 @@ import pl.com.ContextConfiguration;
 import pl.com.pollub.db.entity.Conference;
 import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.service.ConferenceService;
-import pl.com.pollub.webmail.auxiliary.ConferenceComparator;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by mmaciasz on 2016-06-13.
@@ -39,9 +36,9 @@ public class MailContentTest {
     @Test
     public void createMailContent() throws Exception {
         List<Conference> allConferences = conferenceService.findAllConference();
-        Set<ConferenceWithChanges> conferencesSet = new TreeSet<>(ConferenceComparator.getInstance());
-        allConferences.forEach(conf -> conferencesSet.add(new ConferenceWithChanges(conf, null)));
-        mailContent.createMailContent(conferencesSet, ConferenceContentCreator.NEW);
+        List<ConferenceWithChanges> conferences = new ArrayList<>();
+        allConferences.forEach(conf -> conferences.add(new ConferenceWithChanges(conf, null)));
+        mailContent.createMailContent(conferences, ConferenceContentCreator.NEW);
         String content = this.mailContent.getMailContent();
         log.info(System.lineSeparator() + content);
         assertTrue(!content.isEmpty());

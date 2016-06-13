@@ -6,6 +6,7 @@ import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,7 +28,7 @@ public class MailContent {
      * @param conferences    Conferences to send
      * @param contentCreator Conference type
      */
-    public void createMailContent(Set<ConferenceWithChanges> conferences, ConferenceContentCreator contentCreator) {
+    public void createMailContent(List<ConferenceWithChanges> conferences, ConferenceContentCreator contentCreator) {
         conferences.stream().map(contentCreator::getContent).forEach(stringBuilderMC::append);
     }
 
