@@ -10,5 +10,7 @@ public interface UserSettingsService {
 	
 	public List<UserSettings> getAllUserSettings();
 	
+	public List<UserSettings> getAllUserSettingsWithNewsletterLevel(int level);
 	
+	public UserSettings getUserSettingsByUserId(int userId);
 }
