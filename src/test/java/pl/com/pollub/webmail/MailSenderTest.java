@@ -1,4 +1,4 @@
-package pl.com.webmail;
+package pl.com.pollub.webmail;
 
 import junit.framework.TestCase;
 

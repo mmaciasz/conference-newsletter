@@ -1,4 +1,4 @@
-package pl.com.webmail;
+package pl.com.pollub.webmail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

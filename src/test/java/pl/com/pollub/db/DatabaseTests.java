@@ -1,4 +1,4 @@
-package pl.com.db;
+package pl.com.pollub.db;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
