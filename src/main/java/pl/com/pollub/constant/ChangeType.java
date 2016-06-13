@@ -5,10 +5,10 @@ package pl.com.pollub.constant;
  */
 public enum ChangeType {
     APPLICATION_DATE("Zmieniono termin zgłaszania artykułu z %s na %s"),
-    PAYMENT_DATE(""),
-    FULLPAPER_DATE(""),
-    DATE_TO(""),
-    DATE_FROM("");
+    PAYMENT_DATE("Zmieniono termin opłaty z %s na %s"),
+    FULLPAPER_DATE("Zmieniono termin wysyłania pełnych tekstów artykułów z %s na %s"),
+    DATE_TO("Zmieniono datę rozpoczęcia konferencji z %s na %s"),
+    DATE_FROM("Zmieniono datę zakończenia konferencji z %s na %s");
 
     private String changeName;
 

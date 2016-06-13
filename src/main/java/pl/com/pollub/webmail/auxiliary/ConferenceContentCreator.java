@@ -69,7 +69,8 @@ public enum ConferenceContentCreator {
                     + conference.getConference().getName()
                     + ". Data terminu zgłaszania - "
                     + conference.getConference().getApplicationDate().format(formatter)
-                    + ". Nastąpiła zmiana terminu zgłaszania artykułów."
+                    + " "
+                    + conference.getChanges()
                     + newLine;
         }
     },
@@ -82,7 +83,8 @@ public enum ConferenceContentCreator {
                     + conference.getConference().getDateFrom().format(formatter)
                     + ", data zakończenia - "
                     + conference.getConference().getDateTo().format(formatter)
-                    + ". Nastąpiła zmiana terminu konferencji."
+                    + " "
+                    + conference.getChanges()
                     + newLine;
         }
     },
@@ -93,7 +95,8 @@ public enum ConferenceContentCreator {
                     + conference.getConference().getName()
                     + ". Data nadsyłania pełnych tekstów - "
                     + conference.getConference().getFullPaperDate().format(formatter)
-                    + ". Nastąpiła zmiana terminu nadsyłania pełnych tekstów artykułów."
+                    + " "
+                    + conference.getChanges()
                     + newLine;
         }
     },
@@ -104,14 +107,15 @@ public enum ConferenceContentCreator {
                     + conference.getConference().getName()
                     + ". Data wniesienia opłaty - "
                     + conference.getConference().getPaymentDate().format(formatter)
-                    + ". Nastąpiła terminu opłaty."
+                    + " "
+                    + conference.getChanges()
                     + newLine;
         }
     },
     CHANGES_OTHERS {
         @Override
         public String getContent(ConferenceWithChanges conference) {
-            return "Zmiany w konferencji - "
+            return "Inne zmiany w konferencji - "
                     + conference.getConference().getName()
                     + ". Data rozpoczęcia - "
                     + conference.getConference().getDateFrom().format(formatter)
