@@ -12,6 +12,7 @@ import pl.com.pollub.service.ConferenceChangesService;
 import pl.com.pollub.service.ConferenceService;
 import pl.com.pollub.utils.DateUtilities;
 import pl.com.pollub.utils.DateUtilities.DateRange;
+import pl.com.pollub.webmail.MailContent;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -23,13 +24,16 @@ public class Scheduler {
     private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
     private ConferenceService conferenceService;
-
     private ConferenceChangesService changedService;
+    private MailContent mailContent;
+
+    private static final Object synchroObj = new Object();
 
     @Autowired
-    public Scheduler(ConferenceService conferenceService, ConferenceChangesService confChangeService) {
+    public Scheduler(ConferenceService conferenceService, ConferenceChangesService confChangeService, MailContent mailContent) {
         this.conferenceService = conferenceService;
         this.changedService = confChangeService;
+        this.mailContent = mailContent;
     }
 
     /**
@@ -38,6 +42,9 @@ public class Scheduler {
     @Scheduled(cron = "${cron.daily.expression}")
     private void dailyTask() {
         log.info("Executiong daily task...");
+        synchronized (synchroObj) {
+
+        }
     }
 
     /**
@@ -46,6 +53,9 @@ public class Scheduler {
     @Scheduled(cron = "${cron.weekly.expression}")
     private void weeklyTask() {
         log.info("Executiong weekly task...");
+        synchronized (synchroObj) {
+
+        }
     }
 
     /**
@@ -54,6 +64,9 @@ public class Scheduler {
     @Scheduled(cron = "${cron.monthly.expression}")
     private void monthlyTask() {
         log.info("Executing monthly task...");
+        synchronized (synchroObj) {
+
+        }
     }
 
     /**
@@ -62,6 +75,9 @@ public class Scheduler {
     @Scheduled(cron = "${cron.quarter.expression}")
     private void quarterTask() {
         log.info("Executing quarter task...");
+        synchronized (synchroObj) {
+
+        }
     }
 
     /**
