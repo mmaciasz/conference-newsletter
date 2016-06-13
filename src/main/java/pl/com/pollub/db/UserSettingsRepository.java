@@ -12,12 +12,12 @@ import pl.com.pollub.db.entity.UserSettings;
 @Repository
 public interface UserSettingsRepository extends CrudRepository<UserSettings, Integer>{
 	
-	@Query("select us from usersettings us where us.id = ?1")
+	@Query("select us from UserSettings us where us.id = ?1")
 	UserSettings getById(int id);
 	
-	@Query("select us from usersettings where us.active = 1 and us.newsletterlevel = ?1")
+	@Query("select us from UserSettings us where us.active = 1 and us.newsletterLevel = ?1")
     List<UserSettings> getAllUserSettingsWithNewsletterLevel(int level);
 	
-	@Query("select us from usersettings where us.active = 1 and us.userid = ?1")
+	@Query("select us from UserSettings us where us.active = 1 and us.userId = ?1")
 	UserSettings getUserSettingsByUserId(int userId);
 }
