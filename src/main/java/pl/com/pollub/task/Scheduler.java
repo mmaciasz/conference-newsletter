@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 import pl.com.pollub.db.entity.Conference;
 import pl.com.pollub.db.entity.ConferenceChanges;
 import pl.com.pollub.service.ConferenceChangesService;
@@ -17,7 +16,6 @@ import pl.com.pollub.webmail.MailContent;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -127,7 +125,7 @@ public class Scheduler {
 //    	changesComments.stream().map(ConferenceChanges::getType).forEach(System.out::println);
     }
 
-    private List<Pair<ConferenceContentCreator, Set<Conference>>> getData(LocalDateTime startDt, LocalDateTime stopDt, DateRange dateRange, boolean inPast){
+    private List<Pair<ConferenceContentCreator, Set<Conference>>> getData(LocalDateTime startDt, LocalDateTime stopDt){
         return null;
     }
     
