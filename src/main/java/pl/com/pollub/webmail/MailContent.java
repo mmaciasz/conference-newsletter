@@ -5,7 +5,7 @@ import pl.com.pollub.db.entity.Conference;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import javax.annotation.PostConstruct;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mmaciasz on 2016-06-10.
@@ -22,10 +22,11 @@ public class MailContent {
 
     /**
      * Creating content from exact conference type.
+     *
      * @param conferences    Conferences to send
      * @param contentCreator Conference type
      */
-    public void createMailContent(List<Conference> conferences, ConferenceContentCreator contentCreator) {
+    public void createMailContent(Set<Conference> conferences, ConferenceContentCreator contentCreator) {
         conferences.stream().map(contentCreator::getContent).forEach(stringBuilderMC::append);
     }
 

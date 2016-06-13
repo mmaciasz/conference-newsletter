@@ -10,9 +10,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.com.ContextConfiguration;
 import pl.com.pollub.db.entity.Conference;
 import pl.com.pollub.service.ConferenceService;
+import pl.com.pollub.webmail.auxiliary.ConferenceComparator;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static org.junit.Assert.*;
 
@@ -34,7 +38,9 @@ public class MailContentTest {
     @Test
     public void createMailContent() throws Exception {
         List<Conference> allConferences = conferenceService.findAllConference();
-        mailContent.createMailContent(allConferences, ConferenceContentCreator.NEW);
+        Set<Conference> conferencesSet = new TreeSet<>(ConferenceComparator.getInstance());
+        allConferences.stream().forEach(conferencesSet::add);
+        mailContent.createMailContent(conferencesSet, ConferenceContentCreator.NEW);
         String content = this.mailContent.getMailContent();
         log.info(System.lineSeparator() + content);
         assertTrue(!content.isEmpty());
