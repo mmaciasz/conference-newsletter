@@ -57,7 +57,7 @@ public class UserSettings {
         this.active = active;
     }
     
-	public boolean compere (User user){
+	public boolean compare (User user){
 		return (this.getEmail().equals(user.getEmail()) 
 				&& this.userId == user.getUserId());
 	}

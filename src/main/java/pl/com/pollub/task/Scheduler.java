@@ -1,15 +1,18 @@
 package pl.com.pollub.task;
 
 import javafx.util.Pair;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
 import pl.com.pollub.db.entity.UserSettings;
 import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.service.UserSettingsService;
+import pl.com.pollub.synchro.UserSettingsSynchronize;
 import pl.com.pollub.task.auxiliary.DataGatherGroups;
 import pl.com.pollub.utils.DateUtilities;
 import pl.com.pollub.utils.DateUtilities.DateRange;
@@ -30,14 +33,16 @@ public class Scheduler {
     private UserSettingsService userSettings;
     private MailContent mailContent;
     private MailSender mailSender;
+    private UserSettingsSynchronize userSettingsSynchro;
 
     private static final Object synchroObj = new Object();
 
     @Autowired
-    public Scheduler(UserSettingsService userSettings, MailContent mailContent, MailSender mailSender) {
+    public Scheduler(UserSettingsService userSettings, MailContent mailContent, MailSender mailSender, UserSettingsSynchronize userSettingsSynchro) {
         this.userSettings = userSettings;
         this.mailContent = mailContent;
         this.mailSender = mailSender;
+        this.userSettingsSynchro = userSettingsSynchro;
     }
 
     /**
@@ -46,6 +51,8 @@ public class Scheduler {
     @Scheduled(cron = "${cron.daily.expression}")
     private void dailyTask() {
         log.info("Executiong daily task...");
+        userSettingsSynchro.synchronizeUserSettings();
+        log.info("Synchronize userSettings...");
         log.info("Gathering data...");
         final List<Pair<ConferenceContentCreator, List<ConferenceWithChanges>>> dataToSend = new LinkedList<>();
         LocalDateTime now = LocalDateTime.now();
