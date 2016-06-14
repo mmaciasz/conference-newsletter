@@ -12,6 +12,7 @@ public class UserSettings {
     private Long userId;
     private String email;
     private int newsletterLevel;
+    private int active;
 
     public UserSettings() {
     }
@@ -48,4 +49,11 @@ public class UserSettings {
         this.newsletterLevel = newsletterLevel;
     }
 
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
 }
