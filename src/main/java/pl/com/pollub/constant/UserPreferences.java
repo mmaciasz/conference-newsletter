@@ -39,4 +39,13 @@ public enum UserPreferences {
     public List<ConferenceContentCreator> getAllowedContent() {
         return allowedContent;
     }
+
+    public static UserPreferences getByNewsletterLevel(int level) {
+        for (UserPreferences userPreferences : UserPreferences.values()) {
+            if (userPreferences.getNewsletterLevel() == level) {
+                return userPreferences;
+            }
+        }
+        throw new IllegalArgumentException("There is no user preferences matching level - " + level);
+    }
 }
