@@ -56,7 +56,7 @@ public class ConferenceChangesServiceImpl implements ConferenceChangesService {
     }
 
     @Override
-    public List<ConferenceChanges> getChangeConferenceAndPropertyFileds(LocalDateTime start, LocalDateTime end) {
+    public List<ConferenceChanges> getChangeConferenceAndPropertyFields(LocalDateTime start, LocalDateTime end) {
         return repository.getChangeConferenceAndPropertyFileds(start, end);
     }
 

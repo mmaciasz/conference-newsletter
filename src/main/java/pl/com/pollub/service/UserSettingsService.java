@@ -1,16 +1,16 @@
 package pl.com.pollub.service;
 
-import java.util.List;
-
 import pl.com.pollub.db.entity.UserSettings;
+
+import java.util.List;
 
 public interface UserSettingsService {
 
-	public UserSettings getById(int id);
-	
-	public List<UserSettings> getAllUserSettings();
-	
-	public List<UserSettings> getAllUserSettingsWithNewsletterLevel(int level);
-	
-	public UserSettings getUserSettingsByUserId(int userId);
+    UserSettings getById(int id);
+
+    List<UserSettings> getAllUserSettings();
+
+    List<UserSettings> getAllUserSettingsWithNewsletterLevel(int level);
+
+    UserSettings getUserSettingsByUserId(int userId);
 }

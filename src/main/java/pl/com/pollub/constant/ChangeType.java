@@ -22,7 +22,7 @@ public enum ChangeType {
                 return changeType;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("There is no enum for name - " + name);
     }
 
     public String getChangeName() {

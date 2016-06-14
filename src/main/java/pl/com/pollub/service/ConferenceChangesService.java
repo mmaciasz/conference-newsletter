@@ -20,7 +20,7 @@ public interface ConferenceChangesService {
 
     List<ConferenceChanges> getConferenceWereMagazineChange(LocalDateTime start, LocalDateTime end);
 
-    List<ConferenceChanges> getChangeConferenceAndPropertyFileds(LocalDateTime start, LocalDateTime end);
+    List<ConferenceChanges> getChangeConferenceAndPropertyFields(LocalDateTime start, LocalDateTime end);
 
     List<ConferenceChanges> getChangeConferenceWithoutFileds(LocalDateTime start, LocalDateTime end);
 }
