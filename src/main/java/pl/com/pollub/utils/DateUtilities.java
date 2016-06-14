@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 public class DateUtilities {
 
-    public static LocalDateTime getEndOfDay(LocalDateTime date) {
+    private static LocalDateTime getEndOfDay(LocalDateTime date) {
         return date.withHour(23).withMinute(59).withSecond(59).withNano(0);
     }
 
-    public static LocalDateTime getStartOfDay(LocalDateTime date) {
+    private static LocalDateTime getStartOfDay(LocalDateTime date) {
         return date.withHour(0).withMinute(0).withSecond(0).withNano(0);
     }
 
@@ -16,16 +16,16 @@ public class DateUtilities {
 
         switch (range) {
             case DAY:
-                date = getEndOfDay(date);
+                date = getEndOfDay(inPast ? date.minusDays(1) : date);
                 break;
             case WEEK:
-                date = getEndOfDay(inPast ? date.minusWeeks(1) : date.plusWeeks(1));
+                date = getEndOfDay(inPast ? date : date.plusWeeks(1));
                 break;
             case MONTH:
-                date = getEndOfDay(inPast ? date.minusMonths(1) : date.plusMonths(1));
+                date = getEndOfDay(inPast ? date : date.plusMonths(1));
                 break;
             case TREE_MONTH:
-                date = getEndOfDay(inPast ? date.minusMonths(3) : date.plusMonths(3));
+                date = getEndOfDay(inPast ? date : date.plusMonths(3));
                 break;
         }
         return date;
@@ -36,16 +36,16 @@ public class DateUtilities {
 
         switch (range) {
             case DAY:
-                date = getStartOfDay(date);
+                date = getStartOfDay(inPast ? date.minusDays(1) : date);
                 break;
             case WEEK:
-                date = getStartOfDay(inPast ? date.minusWeeks(1) : date.plusWeeks(1));
+                date = getStartOfDay(inPast ? date.minusWeeks(1) : date);
                 break;
             case MONTH:
-                date = getStartOfDay(inPast ? date.minusMonths(1) : date.plusMonths(1));
+                date = getStartOfDay(inPast ? date.minusMonths(1) : date);
                 break;
             case TREE_MONTH:
-                date = getStartOfDay(inPast ? date.minusMonths(3) : date.plusMonths(3));
+                date = getStartOfDay(inPast ? date.minusMonths(3) : date);
                 break;
         }
         return date;

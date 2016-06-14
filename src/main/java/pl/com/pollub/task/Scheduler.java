@@ -109,7 +109,6 @@ public class Scheduler {
         LocalDateTime endDateWeek = DateUtilities.getDayEnd(today, DateRange.WEEK, true);
         LocalDateTime endDateMonth = DateUtilities.getDayEnd(today, DateRange.MONTH, false);
         LocalDateTime endDate3Month = DateUtilities.getDayEnd(today, DateRange.TREE_MONTH, false);
-        LocalDateTime endDate2 = DateUtilities.getEndOfDay(today);
 
         DataGatherer.getByName("LAST_YEAR_STARTS");
 
