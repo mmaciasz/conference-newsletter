@@ -8,7 +8,7 @@ public class UserSettings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private Long userId;
     private String email;
     private int newsletterLevel;
@@ -17,11 +17,11 @@ public class UserSettings {
     public UserSettings() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,4 +56,9 @@ public class UserSettings {
     public void setActive(int active) {
         this.active = active;
     }
+    
+	public boolean compere (User user){
+		return (this.getEmail().equals(user.getEmail()) 
+				&& this.userId == user.getUserId());
+	}
 }
