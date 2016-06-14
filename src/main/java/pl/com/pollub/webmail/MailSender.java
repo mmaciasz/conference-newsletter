@@ -59,7 +59,7 @@ public class MailSender {
         });
     }
 
-    public void sendEmail(String emailText, String subject, String address) {
+    public synchronized void sendEmail(String emailText, String subject, String address) {
         try {
             Message message;
             if (sslConnection) {

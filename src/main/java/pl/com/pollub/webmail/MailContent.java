@@ -1,13 +1,14 @@
 package pl.com.pollub.webmail;
 
+import javafx.util.Pair;
 import org.springframework.stereotype.Component;
-import pl.com.pollub.db.entity.Conference;
+import pl.com.pollub.constant.UserPreferences;
+import pl.com.pollub.db.entity.UserSettings;
 import pl.com.pollub.dto.ConferenceWithChanges;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by mmaciasz on 2016-06-10.
@@ -24,12 +25,16 @@ public class MailContent {
 
     /**
      * Creating content from exact conference type.
-     *
-     * @param conferences    Conferences to send
-     * @param contentCreator Conference type
      */
-    public void createMailContent(List<ConferenceWithChanges> conferences, ConferenceContentCreator contentCreator) {
-        conferences.stream().map(contentCreator::getContent).forEach(stringBuilderMC::append);
+    public void createMailContent(final UserSettings user, final List<Pair<ConferenceContentCreator, List<ConferenceWithChanges>>> dataToSend) {
+        UserPreferences preferences = UserPreferences.getByNewsletterLevel(user.getNewsletterLevel());
+        List<ConferenceContentCreator> allowedContent = preferences.getAllowedContent();
+        dataToSend.forEach(data -> {
+            ConferenceContentCreator contentCreator = data.getKey();
+            if (allowedContent.contains(contentCreator)) {
+                data.getValue().stream().map(contentCreator::getContent).forEach(stringBuilderMC::append);
+            }
+        });
     }
 
     /**
