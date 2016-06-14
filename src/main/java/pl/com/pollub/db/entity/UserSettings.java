@@ -9,7 +9,7 @@ public class UserSettings {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private Long userId;
+    private int userId;
     private String email;
     private int newsletterLevel;
     private int active;
@@ -25,11 +25,11 @@ public class UserSettings {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
