@@ -293,13 +293,11 @@ DELIMITER ;
 /*
  * add usersettings table
  */
-CREATE TABLE `conference`.`usersettings` ( 
+CREATE TABLE `conference`.`usersettings` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `userid` INT NOT NULL , 
-`name` VARCHAR(45) NOT NULL , 
-`lastname` VARCHAR(45) NOT NULL ,
-`newsletterlevel` INT NOT NULL ,
-`allowednewsletterlevel` INT NOT NULL ,
+`email` VARCHAR(200) NOT NULL ,
+`newsletterlevel` INT NOT NULL,
 `active` INT NOT NULL, PRIMARY KEY (`id`),
 CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE NO ACTION ON UPDATE NO ACTION) ENGINE = InnoDB;
 

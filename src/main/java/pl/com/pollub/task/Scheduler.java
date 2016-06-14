@@ -4,14 +4,12 @@ import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pl.com.pollub.constant.ChangeType;
-import pl.com.pollub.db.entity.Conference;
-import pl.com.pollub.db.entity.ConferenceChanges;
 import pl.com.pollub.dto.ConferenceWithChanges;
-import pl.com.pollub.service.ConferenceChangesService;
-import pl.com.pollub.service.ConferenceService;
+import pl.com.pollub.service.UserSettingsService;
+import pl.com.pollub.task.auxiliary.DataGatherGroups;
 import pl.com.pollub.task.auxiliary.DataGatherer;
 import pl.com.pollub.utils.DateUtilities;
 import pl.com.pollub.utils.DateUtilities.DateRange;
@@ -19,25 +17,23 @@ import pl.com.pollub.webmail.MailContent;
 import pl.com.pollub.webmail.auxiliary.ConferenceContentCreator;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Component
+@Scope("singleton")
 public class Scheduler {
 
     private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
-    private ConferenceService conferenceService;
-    private ConferenceChangesService changedService;
+    private UserSettingsService userSettings;
     private MailContent mailContent;
 
     private static final Object synchroObj = new Object();
 
     @Autowired
-    public Scheduler(ConferenceService conferenceService, ConferenceChangesService confChangeService, MailContent mailContent) {
-        this.conferenceService = conferenceService;
-        this.changedService = confChangeService;
+    public Scheduler(UserSettingsService userSettings, MailContent mailContent) {
+        this.userSettings = userSettings;
         this.mailContent = mailContent;
     }
 
@@ -48,7 +44,12 @@ public class Scheduler {
     private void dailyTask() {
         log.info("Executiong daily task...");
         synchronized (synchroObj) {
-
+            //TODO Pobrać liste userów
+            final List<Pair<ConferenceContentCreator, List<ConferenceWithChanges>>> dataToSend = new LinkedList<>();
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime dayStart = DateUtilities.getDayStart(now, DateRange.DAY, true);
+            LocalDateTime dayEnd = DateUtilities.getDayEnd(now, DateRange.DAY, true);
+            DataGatherGroups.DAILY.getDataPacks().parallelStream().forEach(dg -> dataToSend.add(dg.getData(dayStart, dayEnd)));
         }
     }
 

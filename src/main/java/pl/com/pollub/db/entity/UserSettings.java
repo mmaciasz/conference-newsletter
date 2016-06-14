@@ -1,9 +1,6 @@
 package pl.com.pollub.db.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "UserSettings")
@@ -13,13 +10,8 @@ public class UserSettings {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long userId;
-    private String name;
-    private String lastName;
+    private String email;
     private int newsletterLevel;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime time;
-    private int allowedNewsletterLevel;
-    private int active;
 
     public UserSettings() {
     }
@@ -40,20 +32,12 @@ public class UserSettings {
         this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getNewsletterLevel() {
@@ -62,30 +46,6 @@ public class UserSettings {
 
     public void setNewsletterLevel(int newsletterLevel) {
         this.newsletterLevel = newsletterLevel;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
-    public int getAllowedNewsletterLevel() {
-        return allowedNewsletterLevel;
-    }
-
-    public void setAllowedNewsletterLevel(int allowedNewsletterLevel) {
-        this.allowedNewsletterLevel = allowedNewsletterLevel;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
     }
 
 }
