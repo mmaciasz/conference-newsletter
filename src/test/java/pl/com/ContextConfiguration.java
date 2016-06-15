@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import pl.com.pollub.Main;
 import pl.com.pollub.db.ConferenceChangesRepository;
 import pl.com.pollub.db.ConferenceRepository;
 import pl.com.pollub.db.entity.Conference;
@@ -15,9 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @EnableAutoConfiguration
-@ComponentScan
-public class
-ContextConfiguration {
+@ComponentScan(basePackages = {"pl.com.pollub.db", "pl.com.pollub.task", "pl.com.pollub.webmail", "pl.com.pollub.service", "pl.com.pollub.synchro"})
+public class ContextConfiguration {
 
     private List<Conference> conferences;
 

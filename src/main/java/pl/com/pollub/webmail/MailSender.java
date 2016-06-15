@@ -24,6 +24,12 @@ public class MailSender {
     @Value("${webmail.senderEmail}")
     private String senderEmail;
 
+    @Value("${mail.smtp.host}")
+    private String mailSmtpHost;
+
+    @Value("${mail.smtp.port}")
+    private String mailSmtpPort;
+
     private static boolean sslConnection = false;
 
     private static Session session;
@@ -33,9 +39,9 @@ public class MailSender {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.host", mailSmtpHost);
+        props.put("mail.smtp.port", mailSmtpPort);
+        props.put("mail.smtp.ssl.trust", mailSmtpHost);
 
         session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -46,11 +52,11 @@ public class MailSender {
 
     public void setSSLSession() {
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.host", mailSmtpHost);
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.port", mailSmtpPort);
 
         sessionSSL = Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
